@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Travers Builders: construction, electrical and plumbing services in Cape Town and surrounding areas. Call or WhatsApp 061 788 9142.">
+<title>Travers Builders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Big+Shoulders+Display:wght@700;800;900&family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: full-bleed black bands, red slab accents, hero split with site photo, 12-tile service grid, quote form that opens WhatsApp. */
+:root {
+  --ink: #0b0b0c;
+  --coal: #151516;
+  --steel: #232325;
+  --line: #333335;
+  --bone: #f3f1ee;
+  --mute: #a4a1a0;
+  --red: #e0211f;
+  --red-deep: #b01512;
+  --gold: #f5b82e;
+  --gold-deep: #c98d0c;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 0;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+.wrap {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); text-transform: uppercase; line-height: 0.95; margin: 0; text-wrap: balance; letter-spacing: 0.005em; }
+.label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+
+/* Header */
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(11,11,12,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+.lockup { --h: 86px; display: block; flex: none; height: var(--h); width: calc(var(--h) * 2.7778); overflow: visible; transition: transform .2s ease; }
+.brand:hover .lockup { transform: rotate(-1.5deg) scale(1.03); }
+.lockup.big { --h: 150px; }
+.nav { display: flex; align-items: center; gap: 26px; }
+.nav a { text-decoration: none; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--bone); }
+.nav a:hover { color: var(--gold); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; padding: 14px 24px; border: 2px solid var(--red); background: var(--red); color: #fff; cursor: pointer; transition: background .15s, border-color .15s, transform .15s; border-radius: 2px; }
+.btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.btn.ghost { background: transparent; color: var(--bone); border-color: var(--bone); }
+.btn.ghost:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.btn.small { font-size: 17px; padding: 9px 16px; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+
+/* Hero */
+.hero { position: relative; border-bottom: 1px solid var(--line); overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: center; padding-block: 56px 64px; }
+.hero h1 { font-weight: 900; font-size: clamp(54px, 8.4vw, 112px); margin-top: 18px; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero p.lead { max-width: 46ch; font-size: 19px; color: #d6d3d1; margin: 24px 0 32px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-photo { position: relative; width: 100%; max-width: 210px; justify-self: end; }
+.hero-photo::before { content: ""; position: absolute; inset: 30px -22px -26px 30px; background: var(--gold); z-index: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%); }
+.hero-photo::after { content: ""; position: absolute; inset: 15px -10px -12px 15px; background: var(--red); z-index: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%); }
+.hero-photo img { position: relative; z-index: 1; width: 100%; height: auto; aspect-ratio: 5 / 6; object-fit: cover; object-position: 50% 30%; border: 1px solid var(--line); }
+.stamp { position: absolute; z-index: 2; left: -14px; bottom: 26px; background: var(--ink); border: 2px solid var(--gold); box-shadow: 5px 5px 0 var(--red); padding: 6px 12px; font-family: var(--font-display); text-transform: uppercase; line-height: 0.9; transform: rotate(-4deg); }
+.stamp b { display: block; font-size: 34px; font-weight: 900; color: var(--gold); }
+.stamp span { font-size: 12px; letter-spacing: 0.12em; font-weight: 700; }
+
+/* Trade ticker */
+.ticker { background: var(--red); color: #fff; }
+.ticker::after { content: ""; display: block; height: 12px; background: repeating-linear-gradient(-45deg, var(--gold) 0 14px, var(--ink) 14px 28px); }
+.ticker-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding-block: 14px; font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; letter-spacing: 0.06em; }
+.ticker-row span::after { content: ""; display: inline-block; width: 9px; height: 9px; background: var(--gold); margin-left: 24px; vertical-align: middle; transform: rotate(45deg); }
+.ticker-row span:last-child::after { display: none; }
+
+/* Sections */
+section { padding-block: 84px; }
+.sec-head { display: grid; gap: 14px; margin-bottom: 40px; max-width: 760px; }
+.sec-head h2 { font-size: clamp(40px, 6vw, 74px); font-weight: 900; }
+.sec-head p { color: var(--mute); margin: 0; max-width: 56ch; }
+
+/* Services */
+.grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.tile { position: relative; background: var(--coal); border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column; }
+.tile img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; filter: saturate(0.92) contrast(1.02); transition: transform .35s ease; }
+.tile:hover img { transform: scale(1.04); }
+.tile .pic { overflow: hidden; border-bottom: 3px solid var(--gold); }
+.tile:hover { border-color: var(--gold); }
+.tile h3 { font-size: 19px; font-weight: 800; padding: 10px 12px 3px; }
+.tile p { margin: 0; padding: 0 12px 10px; color: var(--mute); font-size: 13px; line-height: 1.4; }
+.tile .kind { position: absolute; top: 6px; left: 6px; z-index: 2; background: var(--ink); font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 8px; color: var(--bone); border-left: 3px solid var(--red); border-bottom: 2px solid var(--gold); }
+.tile.cta { background: var(--red); border-color: var(--red); justify-content: center; padding: 14px 12px; gap: 8px; }
+.tile.cta h3 { padding: 0; font-size: 24px; font-weight: 900; }
+.tile.cta p { padding: 0; color: #ffe3e2; font-size: 16px; }
+.tile.cta .btn { background: var(--ink); border-color: var(--ink); align-self: flex-start; }
+.tile.cta .btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+/* Why */
+.why { background: var(--coal); border-block: 1px solid var(--line); }
+.why-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); }
+.why-item { padding: 30px 28px 34px; border-right: 1px solid var(--line); background: var(--ink); }
+.why-item:last-child { border-right: 0; }
+.why-item h3 { font-size: 34px; font-weight: 800; margin: 14px 0 12px; }
+.why-item p { margin: 0; color: var(--mute); }
+.why-item .big { font-family: var(--font-display); font-weight: 900; font-size: 72px; line-height: 0.85; color: var(--gold); text-shadow: 3px 3px 0 var(--red); }
+.area { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+.area svg { width: 220px; max-width: 100%; height: auto; }
+.area p { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: 0.04em; }
+.area p span { color: var(--gold); }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+.contact-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.contact-list .row { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 14px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.contact-list .k { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.contact-list .v { font-family: var(--font-display); font-weight: 800; font-size: 32px; line-height: 1; letter-spacing: 0.02em; overflow-wrap: anywhere; }
+.contact-list .v.sm { font-size: 24px; }
+.contact-list a { text-decoration: none; }
+.contact-list a:hover { color: var(--gold); }
+.copy { margin-left: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--mute); border: 1px solid var(--line); padding: 4px 8px; cursor: pointer; vertical-align: middle; border-radius: 2px; }
+.copy:hover { color: var(--bone); border-color: var(--bone); }
+
+form.quote { background: var(--coal); border: 1px solid var(--line); border-top: 4px solid var(--gold); box-shadow: 8px 8px 0 var(--red); padding: 30px 28px 32px; display: grid; gap: 18px; }
+form.quote h3 { font-size: 38px; font-weight: 900; }
+.field { display: grid; gap: 7px; }
+.field label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.field input, .field select, .field textarea { font: inherit; font-size: 17px; color: var(--bone); background: var(--ink); border: 1px solid #4a4a4d; padding: 12px 14px; border-radius: 2px; width: 100%; }
+.field textarea { min-height: 110px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 3px solid var(--red); outline-offset: 0; border-color: var(--red); }
+.field select option { background: var(--ink); color: var(--bone); }
+.form-note { margin: 0; font-size: 14px; color: var(--mute); }
+
+/* Service detail card */
+.tile[data-service] { cursor: pointer; }
+.tile .more { margin-top: auto; padding: 0 12px 12px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+.tile .more::after { content: " \2192"; }
+.tile[data-service]:hover .more { color: var(--bone); }
+.modal { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,0.82); display: flex; align-items: center; justify-content: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.modal-card { position: relative; width: 100%; max-width: 760px; max-height: 100%; overflow-y: auto; background: var(--coal); border: 1px solid var(--line); border-top: 5px solid var(--gold); box-shadow: 10px 10px 0 var(--red); display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); }
+.m-close { position: absolute; top: 10px; right: 10px; z-index: 3; width: 44px; height: 44px; display: grid; place-items: center; background: var(--ink); color: var(--bone); border: 2px solid var(--bone); font-family: var(--font-display); font-weight: 900; font-size: 26px; line-height: 1; cursor: pointer; border-radius: 2px; }
+.m-close:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.m-gallery { background: var(--ink); display: flex; flex-direction: column; min-width: 0; }
+.m-gallery .m-main { width: 100%; flex: none; aspect-ratio: 4 / 3; max-height: 240px; object-fit: cover; border-bottom: 3px solid var(--red); }
+.m-thumbs { display: flex; gap: 8px; padding: 10px; overflow-x: auto; }
+.m-thumbs:empty { display: none; }
+.m-thumbs button { flex: none; width: 56px; height: 42px; padding: 0; border: 2px solid var(--line); background: var(--ink); cursor: pointer; border-radius: 2px; }
+.m-thumbs button[aria-current="true"] { border-color: var(--gold); }
+.m-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+.m-body { padding: 28px 24px 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.m-body h3 { font-size: clamp(30px, 4vw, 42px); font-weight: 900; padding-right: 40px; }
+.m-body p { margin: 0; color: #d6d3d1; }
+.m-body h4 { margin: 8px 0 0; font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+.m-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.m-list li { position: relative; padding-left: 22px; }
+.m-list li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 9px; height: 9px; background: var(--red); transform: rotate(45deg); }
+.m-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+@media (max-width: 760px) {
+  .modal { align-items: flex-end; }
+  .modal-card { grid-template-columns: minmax(0, 1fr); box-shadow: none; max-height: 94%; }
+  .m-gallery .m-main { max-height: 200px; }
+  .m-body { padding: 24px 18px 26px; }
+  .tile .more { padding: 0 12px 12px; font-size: 10px; }
+}
+
+/* Floating WhatsApp button */
+.wa-float {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right, 20px));
+  bottom: calc(max(90px, env(safe-area-inset-bottom, 0px)) + 20px);
+  z-index: 50;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px 13px 16px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.wa-float:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(0,0,0,0.5); color: #fff; }
+.wa-float svg { width: 26px; height: 26px; flex: none; }
+@media (max-width: 560px) {
+  .wa-float { bottom: calc(72px + env(safe-area-inset-bottom, 0px) + 12px); right: 14px; padding: 12px 16px 12px 14px; font-size: 15px; }
+}
+footer { background: #000; padding-block: 0 36px; }
+footer::before { content: ""; display: block; height: 12px; background: repeating-linear-gradient(-45deg, var(--red) 0 14px, var(--ink) 14px 28px); margin-bottom: 36px; }
+.foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px 32px; }
+.foot-row p { margin: 0; color: var(--mute); font-size: 14px; }
+.foot-line { font-family: var(--font-display); font-weight: 800; font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bone) !important; margin-bottom: 4px !important; }
+
+/* Mobile bar */
+.mobile-bar { display: none; }
+
+@media (max-width: 900px) {
+  .nav a.link { display: none; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); padding-block: 36px 56px; }
+  .hero-photo { margin-right: 24px; margin-bottom: 22px; }
+  .hero-photo { justify-self: start; max-width: 190px; }
+  .hero-photo img { aspect-ratio: 4 / 3; object-position: 50% 28%; }
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .why-grid { grid-template-columns: minmax(0, 1fr); }
+  .why-item { border-right: 0; border-bottom: 1px solid var(--line); }
+  .why-item:last-child { border-bottom: 0; }
+  .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  section { padding-block: 60px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; padding-bottom: 72px; }
+  .lockup { --h: 68px; }
+  .lockup.big { --h: 116px; }
+  .nav .btn { display: none; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .tile h3 { font-size: 18px; padding: 10px 10px 3px; }
+  .tile p { padding: 0 10px 10px; font-size: 13px; }
+  .tile .kind { font-size: 9.5px; }
+  .tile.cta { padding: 16px 12px; }
+  .tile.cta h3 { font-size: 24px; }
+  .ticker-row { font-size: 20px; justify-content: flex-start; }
+  .ticker-row span::after { margin-left: 16px; }
+  .contact-list .row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .contact-list .v { font-size: 28px; }
+  form.quote { padding: 24px 18px 26px; }
+  .stamp { left: -6px; }
+  .mobile-bar { display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--ink); border-top: 2px solid var(--gold); padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); gap: 10px; }
+  .mobile-bar .btn { padding: 11px 8px; font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tile img, .btn { transition: none; }
+  .tile:hover img { transform: none; }
+}
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="lockup" viewBox="0 0 300 108" overflow="visible">
+    <rect x="198" y="4" width="15" height="26" fill="#e0211f"/>
+    <path d="M50 42 L150 5 L250 42" fill="none" stroke="#f5b82e" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"/>
+    <rect x="144" y="18" width="12" height="12" fill="#f5b82e"/>
+    <path d="M150 18 V30 M144 24 H156" stroke="#0b0b0c" stroke-width="2"/>
+    <path d="M86 33 V82 M214 33 V82" stroke="#f5b82e" stroke-width="7"/>
+    <g transform="translate(12.3 0) skewX(-10)">
+      <text x="155" y="75" text-anchor="middle" textLength="236" lengthAdjust="spacingAndGlyphs" style="font-family:'Dela Gothic One',Impact,sans-serif;font-size:44px" fill="#e0211f">TRAVERS</text>
+      <text x="150" y="70" text-anchor="middle" textLength="236" lengthAdjust="spacingAndGlyphs" style="font-family:'Dela Gothic One',Impact,sans-serif;font-size:44px" fill="#f3f1ee" stroke="#0b0b0c" stroke-width="5" paint-order="stroke" stroke-linejoin="round">TRAVERS</text>
+    </g>
+    <g transform="rotate(-2 150 92)">
+      <polygon points="76,102 90,80 224,80 210,102" fill="#e0211f" transform="translate(4 4)"/>
+      <polygon points="76,102 90,80 224,80 210,102" fill="#f5b82e"/>
+      <text x="150" y="98" text-anchor="middle" textLength="108" lengthAdjust="spacingAndGlyphs" style="font-family:'Big Shoulders Display',Impact,sans-serif;font-weight:900;font-size:20px" fill="#0b0b0c">BUILDERS</text>
+    </g>
+  </symbol>
+</svg>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#top" aria-label="Travers Builders home">
+      <svg class="lockup" aria-hidden="true" focusable="false"><use href="#lockup" width="100%" height="100%"></use></svg>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a class="link" href="#services">Services</a>
+      <a class="link" href="about/index.html">About</a>
+      <a class="link" href="gallery/index.html">Gallery</a>
+      <a class="link" href="#why">Why Travers</a>
+      <a class="link" href="#contact">Contact</a>
+      <a class="btn small" href="tel:+27617889142">Call 061 788 9142</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="label">Construction · Electrical · Plumbing</span>
+        <h1>Building your dreams from <em>foundation</em> to finish.</h1>
+        <p class="lead">One contractor for the whole job. From new houses and renovations to wiring, plumbing, pools and finishing, Travers Builders serves Cape Town and the surrounding areas, day or night.</p>
+        <div class="cta-row">
+          <a class="btn" href="#contact">Get a quote</a>
+          <a class="btn ghost" href="https://wa.me/27617889142" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg>
+            WhatsApp us
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/hero.jpg" alt="Two builders on a scaffold fixing a steel ceiling frame inside a new building" width="480" height="640">
+        <div class="stamp"><b>24/7</b><span>Services</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-label="What we do">
+    <div class="wrap ticker-row"><span>Building</span><span>Renovating</span><span>Roofing</span><span>Powering</span><span>Plumbing</span></div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Construction services</span>
+        <h2>Everything your project needs under one roof</h2>
+        <p>Build it, wire it, plumb it, finish it. Pick the service you need or combine several into one job.</p>
+      </div>
+      <div class="grid">
+        <article class="tile" data-service="New House Construction" role="button" tabindex="0" aria-haspopup="dialog" aria-label="New House Construction: view photos and details"><span class="kind">Build</span><div class="pic"><img src="images/New house.jpeg" alt="House under construction with roof framework" loading="lazy"></div><h3>New House Construction</h3><p>Complete homes built from the foundation up.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Renovations" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Renovations: view photos and details"><span class="kind">Build</span><div class="pic"><img src="images/Renovations.jpeg" alt="Modern kitchen renovation with LED ceiling lighting" loading="lazy"></div><h3>Renovations</h3><p>Kitchens, bathrooms and full-home makeovers.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Roofing" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Roofing: view photos and details"><span class="kind">Build</span><div class="pic"><img src="images/Roofing1.jpeg" alt="Roof structure and timber framework on a new build" loading="lazy"></div><h3>Roofing</h3><p>Timber frames, trusses and full roof structures.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Electrical" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Electrical: view photos and details"><span class="kind">Electrical</span><div class="pic"><img src="images/Electrical.jpeg" alt="Electrician wiring an industrial distribution board" loading="lazy"></div><h3>Electrical</h3><p>Domestic, commercial and industrial wiring.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Ceilings" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Ceilings: view photos and details"><span class="kind">Finishing</span><div class="pic"><img src="images/Ceiling.jpeg" alt="Ceiling installation work on a large commercial space" loading="lazy"></div><h3>Ceilings</h3><p>Clean ceilings with integrated lighting.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Tiling" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Tiling: view photos and details"><span class="kind">Finishing</span><div class="pic"><img src="images/Tiling.jpeg" alt="Marble-tiled bathroom with walk-in shower" loading="lazy"></div><h3>Tiling</h3><p>Floors, walls and wet areas, neatly laid.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Swimming Pools" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Swimming Pools: view photos and details"><span class="kind">Outdoor</span><div class="pic"><img src="images/Swimmin pool.jpeg" alt="Freshly built swimming pool with clear blue water" loading="lazy"></div><h3>Swimming Pools</h3><p>Pools built to suit your garden and budget.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Plumbing" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Plumbing: view photos and details"><span class="kind">Plumbing</span><div class="pic"><img src="images/Tiling.jpeg" alt="Bathroom plumbing and fitting" loading="lazy"></div><h3>Plumbing</h3><p>Installations, repairs and pipework.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Pavements" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Pavements: view photos and details"><span class="kind">Outdoor</span><div class="pic"><img src="images/Swimmin pool.jpeg" alt="Paved area around swimming pool" loading="lazy"></div><h3>Pavements</h3><p>Driveways, walkways and paved areas.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile" data-service="Deckings" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Deckings: view photos and details"><span class="kind">Outdoor</span><div class="pic"><img src="images/Renovations.jpeg" alt="Outdoor living space and deck finishing" loading="lazy"></div><h3>Deckings</h3><p>Timber decks for entertaining outdoors.</p><span class="more">View photos &amp; details</span></article>
+        <article class="tile cta"><h3>Something else in mind?</h3><p>Tell us about the job and we will tell you how we can help.</p><a class="btn" href="#contact">Request a quote</a></article>
+        <article class="tile cta" style="background:var(--coal);border-color:var(--gold);justify-content:center;padding:14px 12px;gap:8px;">
+          <h3 style="padding:0;font-size:20px;font-weight:900;color:var(--gold);">Contact us directly</h3>
+          <a class="btn" href="https://wa.me/27617889142" target="_blank" rel="noopener" style="background:#25d366;border-color:#25d366;color:#fff;align-self:flex-start;">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg>
+            WhatsApp
+          </a>
+          <a class="btn" href="mailto:admin@traversbuilders.co.za" style="align-self:flex-start;font-size:14px;padding:9px 14px;">Email us</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">Why Travers</span>
+        <h2>Your project, our priority</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item"><div class="big">24/7</div><h3>Always available</h3><p>Electrical faults and plumbing emergencies do not keep office hours, so neither do we.</p></div>
+        <div class="why-item"><div class="big">1</div><h3>One team, every trade</h3><p>Construction, electrical and plumbing handled by a single contractor, so there is one number to call.</p></div>
+        <div class="why-item"><div class="big">100%</div><h3>Quality work guaranteed</h3><p>We stand behind the work we do, from the first foundation to the last tile.</p></div>
+      </div>
+      <div class="area">
+        <svg viewBox="0 0 240 70" aria-hidden="true" focusable="false">
+          <path d="M2 66 H238" stroke="#e0211f" stroke-width="3"/>
+          <path d="M6 66 V46 H20 V34 H34 V50 H48 V28 L60 18 L72 28 V50 H88 V38 H104 V14 H114 V38 H126 V22 H142 V50 H158 V40 H172 V54 H190 V30 H204 V46 H220 V66" fill="none" stroke="#f3f1ee" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
+        <p>Serving <span>Cape Town</span> and surrounding areas</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="sec-head">
+          <span class="label">Contact</span>
+          <h2>Call, message or email us</h2>
+          <p>Call or WhatsApp for urgent work, or send the details of your project and we will come back to you with a quote.</p>
+        </div>
+        <div class="contact-list">
+          <div class="row"><span class="k">Call</span><span class="v"><a href="tel:+27617889142">061 788 9142</a><button class="copy" type="button" data-copy="061 788 9142">Copy</button></span></div>
+          <div class="row"><span class="k">WhatsApp</span><span class="v"><a href="https://wa.me/27617889142" target="_blank" rel="noopener">061 788 9142</a></span></div>
+          <div class="row"><span class="k">Email</span><span class="v sm"><a href="mailto:admin@traversbuilders.co.za">admin@traversbuilders.co.za</a><button class="copy" type="button" data-copy="admin@traversbuilders.co.za">Copy</button></span></div>
+          <div class="row"><span class="k">Quick links</span><span class="v" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+            <a class="btn small" href="https://wa.me/27617889142" target="_blank" rel="noopener" style="background:#25d366;border-color:#25d366;font-size:15px;padding:9px 16px;">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:18px;height:18px;"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg>
+              WhatsApp
+            </a>
+            <a class="btn small ghost" href="mailto:admin@traversbuilders.co.za" style="font-size:15px;padding:9px 16px;">Email us</a>
+          </span></div>
+          <div class="row"><span class="k">Website</span><span class="v sm">www.traversbuilders.co.za</span></div>
+          <div class="row"><span class="k">Area</span><span class="v sm">Cape Town and surrounding areas</span></div>
+        </div>
+      </div>
+      <form class="quote" id="quote-form" novalidate>
+        <h3>Request a quote</h3>
+        <div class="field"><label for="q-name">Your name</label><input id="q-name" name="name" type="text" autocomplete="name" placeholder="Full name"></div>
+        <div class="field"><label for="q-service">Service needed</label>
+          <select id="q-service" name="service">
+            <option>New House Construction</option>
+            <option>Renovations</option>
+            <option>Roofing</option>
+            <option>Electrical</option>
+            <option>Plumbing</option>
+            <option>Swimming Pools</option>
+            <option>Pavements</option>
+            <option>Deckings</option>
+            <option>Ceilings</option>
+            <option>Tiling</option>
+            <option>Other / more than one</option>
+          </select>
+        </div>
+        <div class="field"><label for="q-area">Suburb or area</label><input id="q-area" name="area" type="text" placeholder="e.g. Durbanville"></div>
+        <div class="field"><label for="q-details">About the job</label><textarea id="q-details" name="details" placeholder="Tell us what needs doing and when."></textarea></div>
+        <a class="btn" id="q-send" href="https://wa.me/27617889142" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <p class="form-note">This opens WhatsApp with your message ready to send to 061 788 9142. Prefer email? Write to admin@traversbuilders.co.za.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>
+      <svg class="lockup big" role="img" aria-label="Travers Builders"><use href="#lockup" width="100%" height="100%"></use></svg>
+      <p class="foot-line">Your project, our priority</p>
+      <p>Building &middot; Renovating &middot; Powering &middot; Plumbing &middot; Serving Cape Town and surrounding areas</p>
+    </div>
+    <p>&copy; 2026 Travers Builders (Pty) Ltd</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-title">
+  <div class="modal-card">
+    <button class="m-close" id="m-close" type="button" aria-label="Close details">&times;</button>
+    <div class="m-gallery">
+      <img class="m-main" id="m-img" alt="">
+      <div class="m-thumbs" id="m-thumbs"></div>
+    </div>
+    <div class="m-body">
+      <span class="label" id="m-kind"></span>
+      <h3 id="m-title"></h3>
+      <p id="m-sum"></p>
+      <h4>What we do</h4>
+      <ul class="m-list" id="m-list"></ul>
+      <div class="m-actions">
+        <button class="btn" id="m-quote" type="button">Get a quote</button>
+        <a class="btn ghost" id="m-wa" href="https://wa.me/27617889142" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a class="wa-float" href="https://wa.me/27617889142" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg>
+  WhatsApp us
+</a>
+
+<div class="mobile-bar">
+  <a class="btn" href="tel:+27617889142">Call now</a>
+  <a class="btn ghost" href="https://wa.me/27617889142" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('quote-form');
+  var send = document.getElementById('q-send');
+  function build() {
+    var n = document.getElementById('q-name').value.trim();
+    var s = document.getElementById('q-service').value;
+    var a = document.getElementById('q-area').value.trim();
+    var d = document.getElementById('q-details').value.trim();
+    var t = 'Hello Travers Builders, I would like a quote.' +
+      '\nService: ' + s +
+      (a ? '\nArea: ' + a : '') +
+      (d ? '\nDetails: ' + d : '') +
+      (n ? '\nName: ' + n : '');
+    send.href = 'https://wa.me/27617889142?text=' + encodeURIComponent(t);
+  }
+  form.addEventListener('input', build);
+  form.addEventListener('change', build);
+  form.addEventListener('submit', function (e) { e.preventDefault(); });
+  build();
+
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var text = b.getAttribute('data-copy');
+      var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1400); };
+      try {
+        navigator.clipboard.writeText(text).then(done, function () { fallback(text, b); });
+      } catch (err) { fallback(text, b); }
+    });
+  });
+  function fallback(text, b) {
+    var r = document.createRange();
+    r.selectNodeContents(b.parentNode.querySelector('a'));
+    var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  }
+})();
+</script>
+<script>
+(function () {
+  var D = {
+    "New House Construction": { sum: "From the first foundation to the final finishing touch, we build complete homes under one roof.", items: ["Foundations, brickwork and structure", "Roofing and ceilings", "Electrical and plumbing installed by our own trades", "Tiling and interior finishing", "Pavements, decks and pools added to the same job"], photos: [] },
+    "Renovations": { sum: "Give the space you already own a new look and a new lease of life.", items: ["Kitchen and bathroom makeovers", "Layout changes and rebuilds", "New ceilings and tiling", "Electrical and plumbing upgrades in the same job", "One team on site from start to finish"], photos: [] },
+    "Roofing": { sum: "Solid, well-built roof structures for new builds and repairs.", items: ["Timber trusses and roof frames", "Complete roof structures from slab to ridge", "Roof repairs and replacements", "Ceilings fitted below the roof structure", "24/7 emergency repairs"], photos: [] },
+    "Electrical": { sum: "Safe, reliable electrical work for homes, businesses and industrial premises.", items: ["Distribution boards and switchgear", "Domestic wiring, sockets and lighting", "Commercial and office fit-outs", "Industrial plant and machinery wiring", "Fault finding and 24/7 emergency call-outs"], photos: [] },
+    "Plumbing": { sum: "Plumbing installed properly and repaired fast, for new builds and existing homes.", items: ["Taps, basins, toilets and showers", "Pipework and drainage", "Leak repairs", "Plumbing for renovations and new builds", "24/7 emergency call-outs"], photos: [] },
+    "Swimming Pools": { sum: "A pool designed around your garden, built by the same team that handles the surrounds.", items: ["Pool design and construction", "Paving and decking around the pool", "Pool plumbing and pump connections", "Pool electrical work", "One contractor from excavation to finish"], photos: [] },
+    "Pavements": { sum: "Neat, hard-wearing paving for driveways, walkways and entertaining areas.", items: ["Driveways and walkways", "Patios and paved entertaining areas", "Paving around pools", "Repairs and re-laying"], photos: [] },
+    "Deckings": { sum: "Timber decks that extend your living space outdoors.", items: ["Garden and patio decks", "Pool decks", "Built to suit your space", "Repairs and replacement boards"], photos: [] },
+    "Ceilings": { sum: "Clean, finished ceilings with the lighting built in.", items: ["New ceiling installation", "Recessed and feature lighting", "Ceiling repairs", "Ceilings for new builds and renovations"], photos: [] },
+    "Tiling": { sum: "Floors, walls and wet areas tiled neatly and finished to last.", items: ["Floors and walls", "Bathrooms and showers", "Kitchen splashbacks", "Outdoor tiling", "Repairs and re-grouting"], photos: [] }
+  };
+  var modal = document.getElementById('modal');
+  var mImg = document.getElementById('m-img');
+  var thumbs = document.getElementById('m-thumbs');
+  var opener = null, current = '';
+
+  function setPhoto(src, alt, idx) {
+    mImg.src = src; mImg.alt = alt;
+    Array.prototype.forEach.call(thumbs.children, function (b, i) { b.setAttribute('aria-current', i === idx ? 'true' : 'false'); });
+  }
+  function open(tile) {
+    var title = tile.getAttribute('data-service');
+    var d = D[title]; if (!d) return;
+    current = title; opener = tile;
+    var img = tile.querySelector('img');
+    var photos = [{ src: img.currentSrc || img.src, alt: img.alt }].concat(d.photos || []);
+    document.getElementById('m-kind').textContent = tile.querySelector('.kind').textContent;
+    document.getElementById('m-title').textContent = title;
+    document.getElementById('m-sum').textContent = d.sum;
+    var ul = document.getElementById('m-list'); ul.innerHTML = '';
+    d.items.forEach(function (s) { var li = document.createElement('li'); li.textContent = s; ul.appendChild(li); });
+    thumbs.innerHTML = '';
+    if (photos.length > 1) {
+      photos.forEach(function (ph, i) {
+        var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Photo ' + (i + 1));
+        var im = document.createElement('img'); im.src = ph.src; im.alt = '';
+        b.appendChild(im); b.addEventListener('click', function () { setPhoto(ph.src, ph.alt, i); });
+        thumbs.appendChild(b);
+      });
+    }
+    setPhoto(photos[0].src, photos[0].alt, 0);
+    document.getElementById('m-wa').href = 'https://wa.me/27617889142?text=' + encodeURIComponent('Hello Travers Builders, I am interested in ' + title + '.');
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('m-close').focus();
+  }
+  function close() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (opener) { try { opener.focus(); } catch (e) {} }
+  }
+  document.querySelectorAll('.tile[data-service]').forEach(function (tile) {
+    tile.addEventListener('click', function () { open(tile); });
+    tile.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(tile); } });
+  });
+  document.getElementById('m-close').addEventListener('click', close);
+  modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) close(); });
+  document.getElementById('m-quote').addEventListener('click', function () {
+    var sel = document.getElementById('q-service');
+    if (sel) { sel.value = current; sel.dispatchEvent(new Event('change', { bubbles: true })); }
+    close();
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

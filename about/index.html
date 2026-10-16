@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Meet Travers, founder of Travers Builders, a Cape Town construction, electrical and plumbing company established in 2000.">
+<title>About Travers | Travers Builders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Big+Shoulders+Display:wght@700;800;900&family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root { --ink:#0b0b0c; --coal:#151516; --line:#333335; --bone:#f3f1ee; --mute:#a4a1a0; --red:#e0211f; --gold:#f5b82e;
+  --font-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif; --font-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif; --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace; color-scheme: dark; }
+* { box-sizing: border-box; }
+html { background: var(--ink); }
+body { margin: 0; background: var(--ink); color: var(--bone); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.wrap { max-width: 980px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2 { font-family: var(--font-display); text-transform: uppercase; line-height: 0.95; margin: 0; text-wrap: balance; }
+.label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+header { border-bottom: 1px solid var(--line); }
+.head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; padding-top: max(12px, env(safe-area-inset-top, 0px)); }
+.lockup { display: block; height: 64px; width: calc(64px * 2.7778); overflow: visible; }
+.back { font-family: var(--font-display); font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; border: 2px solid var(--bone); padding: 8px 14px; border-radius: 2px; white-space: nowrap; }
+.back:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.stripe { height: 12px; background: repeating-linear-gradient(-45deg, var(--gold) 0 14px, var(--ink) 14px 28px); }
+main { padding-block: 64px 72px; }
+.profile { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 56px; align-items: start; }
+.founder { position: relative; width: 100%; max-width: 230px; margin-right: 22px; }
+.founder::before { content: ""; position: absolute; inset: 22px -18px -20px 22px; background: var(--gold); z-index: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%); }
+.founder::after { content: ""; position: absolute; inset: 11px -9px -10px 11px; background: var(--red); z-index: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%); }
+.founder img { position: relative; z-index: 1; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 25% 40%; border: 1px solid var(--line); }
+.tag { position: absolute; z-index: 2; left: -12px; bottom: 16px; background: var(--gold); color: var(--ink); padding: 6px 12px; box-shadow: 4px 4px 0 var(--red); transform: rotate(-3deg); font-family: var(--font-display); font-weight: 900; font-size: 22px; line-height: 0.9; text-transform: uppercase; letter-spacing: 0.03em; }
+.tag small { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 10px; letter-spacing: 0.16em; margin-top: 3px; }
+.text h1 { font-size: clamp(46px, 8vw, 84px); font-weight: 900; margin: 12px 0 22px; }
+.text h1 em { font-style: normal; color: var(--gold); }
+.text p { margin: 0 0 16px; color: #d6d3d1; max-width: 58ch; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 30px 0; }
+.fact { border-top: 4px solid var(--red); padding-top: 10px; min-width: 0; }
+.fact b { display: block; font-family: var(--font-display); font-weight: 900; font-size: 34px; line-height: 0.95; color: var(--gold); overflow-wrap: anywhere; }
+.fact span { display: block; margin-top: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mute); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; padding: 12px 22px; border: 2px solid var(--red); background: var(--red); color: #fff; border-radius: 2px; }
+.btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.btn.ghost { background: transparent; color: var(--bone); border-color: var(--bone); }
+footer { border-top: 1px solid var(--line); padding-block: 22px; padding-bottom: max(22px, env(safe-area-inset-bottom, 0px)); color: var(--mute); font-size: 14px; }
+@media (max-width: 720px) {
+  main { padding-block: 40px 56px; }
+  .profile { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .founder { max-width: 190px; }
+  .lockup { height: 52px; width: calc(52px * 2.7778); }
+  .fact b { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="lockup" viewBox="0 0 300 108" overflow="visible">
+    <rect x="198" y="4" width="15" height="26" fill="#e0211f"/>
+    <path d="M50 42 L150 5 L250 42" fill="none" stroke="#f5b82e" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"/>
+    <rect x="144" y="18" width="12" height="12" fill="#f5b82e"/>
+    <path d="M150 18 V30 M144 24 H156" stroke="#0b0b0c" stroke-width="2"/>
+    <path d="M86 33 V82 M214 33 V82" stroke="#f5b82e" stroke-width="7"/>
+    <g transform="translate(12.3 0) skewX(-10)">
+      <text x="155" y="75" text-anchor="middle" textLength="236" lengthAdjust="spacingAndGlyphs" style="font-family:'Dela Gothic One',Impact,sans-serif;font-size:44px" fill="#e0211f">TRAVERS</text>
+      <text x="150" y="70" text-anchor="middle" textLength="236" lengthAdjust="spacingAndGlyphs" style="font-family:'Dela Gothic One',Impact,sans-serif;font-size:44px" fill="#f3f1ee" stroke="#0b0b0c" stroke-width="5" paint-order="stroke" stroke-linejoin="round">TRAVERS</text>
+    </g>
+    <g transform="rotate(-2 150 92)">
+      <polygon points="76,102 90,80 224,80 210,102" fill="#e0211f" transform="translate(4 4)"/>
+      <polygon points="76,102 90,80 224,80 210,102" fill="#f5b82e"/>
+      <text x="150" y="98" text-anchor="middle" textLength="108" lengthAdjust="spacingAndGlyphs" style="font-family:'Big Shoulders Display',Impact,sans-serif;font-weight:900;font-size:20px" fill="#0b0b0c">BUILDERS</text>
+    </g>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap head-row">
+    <svg class="lockup" role="img" aria-label="Travers Builders"><use href="#lockup" width="100%" height="100%"></use></svg>
+    <a class="back" href="../index.html" id="back">&larr; Website</a>
+  </div>
+</header>
+<div class="stripe" aria-hidden="true"></div>
+<main>
+  <div class="wrap profile">
+    <div class="founder">
+      <img src="travers.jpg" alt="Travers, founder of Travers Builders, on site inside a large building under construction" width="480" height="639">
+      <div class="tag">Travers<small>Founder</small></div>
+    </div>
+    <div class="text">
+      <span class="label">About the founder</span>
+      <h1>Meet <em>Travers</em></h1>
+      <p>Travers started Travers Builders in 2000 and still leads the company today. He built it around one idea: a client should be able to deal with one team for the whole job, from the foundation to the finish.</p>
+      <p>Under his direction the company takes on new houses and renovations, electrical work for industrial, commercial and domestic clients, plumbing, swimming pools, pavements, decks, ceilings and tiling. The work is for homes and businesses in Cape Town and the surrounding areas, and the team is available around the clock.</p>
+      <p>Travers works on site with his crew, and he puts it simply: your project is his priority.</p>
+      <div class="facts">
+        <div class="fact"><b>Founder</b><span>Travers Builders</span></div>
+        <div class="fact"><b>2000</b><span>Company established</span></div>
+        <div class="fact"><b>Cape Town</b><span>and surrounding areas</span></div>
+      </div>
+      <div class="cta">
+        <a class="btn" href="tel:+27617889142">Call 061 788 9142</a>
+        <a class="btn ghost" href="https://wa.me/27617889142" target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">Travers Builders (Pty) Ltd &middot; admin@traversbuilders.co.za &middot; www.traversbuilders.co.za</div>
+</footer>
+<script>
+(function () {
+  var b = document.getElementById('back');
+  b.addEventListener('click', function (e) {
+    try { if (document.referrer && history.length > 1) { e.preventDefault(); history.back(); } } catch (err) {}
+  });
+})();
+</script>
+</body>
+</html>
