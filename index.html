@@ -213,8 +213,57 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
 /* Mobile bar */
 .mobile-bar { display: none; }
 
+/* Hamburger / mobile nav */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  background: transparent;
+  border: 2px solid var(--line);
+  border-radius: 2px;
+  cursor: pointer;
+  flex: none;
+  color: var(--bone);
+  padding: 0;
+}
+.menu-toggle:hover { border-color: var(--gold); color: var(--gold); }
+.menu-toggle svg { width: 22px; height: 22px; }
+.menu-toggle .icon-close { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-open { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: var(--coal);
+  border-bottom: 3px solid var(--gold);
+  padding: 8px 0 16px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--bone);
+  padding: 14px max(20px, env(safe-area-inset-left, 20px));
+  border-bottom: 1px solid var(--line);
+}
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover, .mobile-nav a[aria-current] { color: var(--gold); }
+.mobile-nav a.wa-link {
+  color: #25d366;
+  display: flex; align-items: center; gap: 10px;
+}
+.mobile-nav a.wa-link svg { width: 22px; height: 22px; flex: none; }
+.mobile-nav a.call-link { color: var(--red); }
+
 @media (max-width: 900px) {
   .nav a.link { display: none; }
+  .menu-toggle { display: flex; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); padding-block: 36px 56px; }
   .hero-photo { margin-right: 24px; margin-bottom: 22px; }
   .hero-photo { justify-self: start; max-width: 190px; }
@@ -288,7 +337,24 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
       <a class="link" href="#contact">Contact</a>
       <a class="btn small" href="tel:+27617889142">Call 061 788 9142</a>
     </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+    </button>
   </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile menu">
+    <a href="#services">Services</a>
+    <a href="about/index.html">About</a>
+    <a href="gallery/index.html">Gallery</a>
+    <a href="#why">Why Travers</a>
+    <a href="#contact">Get a Quote</a>
+    <a class="call-link" href="tel:+27617889142">&#128222; Call 061 788 9142</a>
+    <a class="wa-link" href="https://wa.me/27617889142" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg>
+      WhatsApp us
+    </a>
+    <a href="mailto:admin@traversbuilders.co.za">&#9993; admin@traversbuilders.co.za</a>
+  </nav>
 </header>
 
 <main id="top">
@@ -564,6 +630,25 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
     if (sel) { sel.value = current; sel.dispatchEvent(new Event('change', { bubbles: true })); }
     close();
     document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  });
+})();
+</script>
+<script>
+// Hamburger menu toggle
+(function () {
+  var toggle = document.getElementById('menu-toggle');
+  var nav = document.getElementById('mobile-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  // Close when any link inside is tapped
+  nav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
   });
 })();
 </script>
