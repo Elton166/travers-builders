@@ -12,12 +12,10 @@
 :root {
   --ink: #0b0b0c;
   --coal: #151516;
-  --steel: #232325;
   --line: #333335;
   --bone: #f3f1ee;
   --mute: #a4a1a0;
   --red: #e0211f;
-  --red-deep: #b01512;
   --gold: #f5b82e;
   --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
   --font-body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -26,208 +24,96 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body {
-  background: var(--ink);
-  color: var(--bone);
-  font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.55;
-  margin: 0;
-}
+body { background: var(--ink); color: var(--bone); font-family: var(--font-body); font-size: 17px; line-height: 1.55; margin: 0; }
 img { display: block; max-width: 100%; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
-
-.wrap {
-  max-width: 1180px;
-  margin-inline: auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
+.wrap { max-width: 1180px; margin-inline: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 h1, h2, h3 { font-family: var(--font-display); text-transform: uppercase; line-height: 0.95; margin: 0; letter-spacing: 0.005em; }
 .label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
 
 /* Header */
 .site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(11,11,12,0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-.head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.head-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 8px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
-/* Logo image */
-.brand-logo { display: block; height: 64px; width: auto; mix-blend-mode: screen; transition: transform .2s ease; }
+.brand-logo { display: block; height: 90px; width: auto; mix-blend-mode: screen; transition: transform .2s ease; }
 .brand:hover .brand-logo { transform: scale(1.04); }
-@media (max-width: 560px) { .brand-logo { height: 48px; } }
 .nav { display: flex; align-items: center; gap: 26px; }
 .nav a { text-decoration: none; font-weight: 600; font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--bone); }
 .nav a:hover, .nav a[aria-current] { color: var(--gold); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; padding: 14px 24px; border: 2px solid var(--red); background: var(--red); color: #fff; cursor: pointer; transition: background .15s, border-color .15s, transform .15s; border-radius: 2px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; padding: 14px 24px; border: 2px solid var(--red); background: var(--red); color: #fff; cursor: pointer; transition: background .15s, border-color .15s; border-radius: 2px; }
 .btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
 .btn.small { font-size: 17px; padding: 9px 16px; }
+.btn svg { width: 20px; height: 20px; flex: none; }
 
-/* Page hero band */
-.page-hero { background: var(--coal); border-bottom: 1px solid var(--line); padding-block: 48px 44px; }
+/* Hamburger */
+.menu-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; background: transparent; border: 2px solid var(--line); border-radius: 2px; cursor: pointer; flex: none; color: var(--bone); padding: 0; }
+.menu-toggle:hover { border-color: var(--gold); color: var(--gold); }
+.menu-toggle svg { width: 22px; height: 22px; }
+.menu-toggle .icon-close { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-open { display: none; }
+.menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+.mobile-nav { display: none; flex-direction: column; background: var(--coal); border-bottom: 3px solid var(--gold); padding: 8px 0 16px; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { text-decoration: none; font-family: var(--font-display); font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--bone); padding: 14px max(20px, env(safe-area-inset-left, 20px)); border-bottom: 1px solid var(--line); }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover, .mobile-nav a[aria-current] { color: var(--gold); }
+.mobile-nav a.wa-link { color: #25d366; display: flex; align-items: center; gap: 10px; }
+.mobile-nav a.wa-link svg { width: 22px; height: 22px; flex: none; }
+.mobile-nav a.call-link { color: var(--red); }
+
+/* Page hero */
+.page-hero { background: var(--coal); border-bottom: 1px solid var(--line); padding-block: 44px 40px; }
 .page-hero .label { margin-bottom: 12px; }
 .page-hero h1 { font-size: clamp(42px, 7vw, 86px); font-weight: 900; }
 .page-hero h1 em { font-style: normal; color: var(--gold); }
-.page-hero p { margin: 16px 0 0; color: var(--mute); max-width: 56ch; }
+.page-hero p { margin: 14px 0 0; color: var(--mute); max-width: 56ch; }
 
 /* Filter bar */
-.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 28px 4px; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 24px 4px; }
 .filter-btn { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; background: transparent; color: var(--mute); border: 1px solid var(--line); padding: 7px 14px; cursor: pointer; border-radius: 2px; transition: color .15s, border-color .15s, background .15s; }
 .filter-btn:hover { color: var(--bone); border-color: var(--bone); }
 .filter-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 600; }
 
 /* Gallery grid */
 .gallery-section { padding-block: 12px 80px; }
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-.g-item {
-  position: relative;
-  overflow: hidden;
-  background: var(--coal);
-  border: 1px solid var(--line);
-  cursor: pointer;
-  aspect-ratio: 4 / 3;
-}
-.g-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .35s ease, filter .35s ease;
-  filter: saturate(0.9) contrast(1.02);
-}
+.gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.g-item { position: relative; overflow: hidden; background: var(--coal); border: 1px solid var(--line); cursor: pointer; aspect-ratio: 4 / 3; }
+.g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease, filter .35s ease; filter: saturate(0.9) contrast(1.02); }
 .g-item:hover img { transform: scale(1.06); filter: saturate(1.1) contrast(1.04); }
-.g-item .g-label {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 28px 10px 10px;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0;
-  transition: opacity .25s ease;
-}
+.g-item .g-tag { position: absolute; top: 7px; left: 7px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 8px; background: var(--ink); color: var(--bone); border-left: 3px solid var(--red); border-bottom: 2px solid var(--gold); }
+.g-item .g-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 10px 10px; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%); font-family: var(--font-display); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0; transition: opacity .25s; }
 .g-item:hover .g-label { opacity: 1; }
-.g-item .g-tag {
-  position: absolute;
-  top: 7px; left: 7px;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  background: var(--ink);
-  color: var(--bone);
-  border-left: 3px solid var(--red);
-  border-bottom: 2px solid var(--gold);
-}
 .g-item[hidden] { display: none; }
 
 /* Lightbox */
-.lightbox {
-  position: fixed; inset: 0; z-index: 60;
-  background: rgba(0,0,0,0.92);
-  display: flex; align-items: center; justify-content: center;
-  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
-}
+.lightbox { position: fixed; inset: 0; z-index: 60; background: rgba(0,0,0,0.93); display: flex; align-items: center; justify-content: center; padding: 16px; }
 .lightbox[hidden] { display: none; }
 .lb-inner { position: relative; max-width: 1000px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.lb-img-wrap { position: relative; width: 100%; max-height: 80vh; display: flex; align-items: center; justify-content: center; }
-.lb-img-wrap img { max-width: 100%; max-height: 80vh; object-fit: contain; border: 1px solid var(--line); box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
-.lb-close {
-  position: absolute; top: -14px; right: -14px; z-index: 2;
-  width: 44px; height: 44px; display: grid; place-items: center;
-  background: var(--ink); color: var(--bone); border: 2px solid var(--bone);
-  font-family: var(--font-display); font-weight: 900; font-size: 26px; line-height: 1;
-  cursor: pointer; border-radius: 2px;
-}
+.lb-img-wrap { position: relative; width: 100%; display: flex; align-items: center; justify-content: center; }
+.lb-img-wrap img { max-width: 100%; max-height: 82vh; object-fit: contain; border: 1px solid var(--line); box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+.lb-close { position: absolute; top: -14px; right: -14px; z-index: 2; width: 44px; height: 44px; display: grid; place-items: center; background: var(--ink); color: var(--bone); border: 2px solid var(--bone); font-family: var(--font-display); font-weight: 900; font-size: 26px; cursor: pointer; border-radius: 2px; }
 .lb-close:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
 .lb-nav { display: flex; align-items: center; gap: 16px; }
-.lb-prev, .lb-next {
-  width: 48px; height: 48px; display: grid; place-items: center;
-  background: var(--coal); border: 2px solid var(--line); color: var(--bone);
-  font-size: 22px; cursor: pointer; border-radius: 2px; flex: none;
-  transition: background .15s, border-color .15s;
-}
+.lb-prev, .lb-next { width: 48px; height: 48px; display: grid; place-items: center; background: var(--coal); border: 2px solid var(--line); color: var(--bone); font-size: 22px; cursor: pointer; border-radius: 2px; transition: background .15s, border-color .15s; }
 .lb-prev:hover, .lb-next:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
-.lb-caption { font-family: var(--font-display); font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--bone); flex: 1; text-align: center; }
+.lb-caption { font-family: var(--font-display); font-weight: 800; font-size: 17px; text-transform: uppercase; letter-spacing: 0.06em; flex: 1; text-align: center; }
 .lb-count { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; color: var(--mute); }
 
 /* CTA band */
 .cta-band { background: var(--red); padding-block: 44px; }
 .cta-band::after { content: ""; display: block; height: 10px; background: repeating-linear-gradient(-45deg, var(--gold) 0 12px, var(--ink) 12px 24px); margin-top: 44px; }
 .cta-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; }
-.cta-inner h2 { font-size: clamp(30px, 4.5vw, 54px); font-weight: 900; }
-.cta-inner .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; }
-.cta-inner .btn.dark { background: var(--ink); border-color: var(--ink); }
-.cta-inner .btn.dark:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
-.cta-inner .btn.wa { background: #25d366; border-color: #25d366; color: #fff; }
-.cta-inner .btn.wa:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.cta-inner h2 { font-size: clamp(28px, 4.5vw, 54px); font-weight: 900; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn.dark { background: var(--ink); border-color: var(--ink); }
+.btn.dark:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.btn.wa { background: #25d366; border-color: #25d366; color: #fff; }
+.btn.wa:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
 
-/* Hamburger / mobile nav */
-.menu-toggle {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 44px; height: 44px;
-  background: transparent;
-  border: 2px solid var(--line);
-  border-radius: 2px;
-  cursor: pointer;
-  flex: none;
-  color: var(--bone);
-  padding: 0;
-}
-.menu-toggle:hover { border-color: var(--gold); color: var(--gold); }
-.menu-toggle svg { width: 22px; height: 22px; }
-.menu-toggle .icon-close { display: none; }
-.menu-toggle[aria-expanded="true"] .icon-open { display: none; }
-.menu-toggle[aria-expanded="true"] .icon-close { display: block; }
-
-.mobile-nav {
-  display: none;
-  flex-direction: column;
-  background: var(--coal);
-  border-bottom: 3px solid var(--gold);
-  padding: 8px 0 16px;
-}
-.mobile-nav.open { display: flex; }
-.mobile-nav a {
-  text-decoration: none;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 22px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--bone);
-  padding: 14px max(20px, env(safe-area-inset-left, 20px));
-  border-bottom: 1px solid var(--line);
-}
-.mobile-nav a:last-child { border-bottom: none; }
-.mobile-nav a:hover, .mobile-nav a[aria-current] { color: var(--gold); }
-.mobile-nav a.wa-link { color: #25d366; display: flex; align-items: center; gap: 10px; }
-.mobile-nav a.wa-link svg { width: 22px; height: 22px; flex: none; }
-.mobile-nav a.call-link { color: var(--red); }
-.wa-float {
-  position: fixed;
-  right: max(20px, env(safe-area-inset-right, 20px));
-  bottom: 24px;
-  z-index: 50;
-  background: #25d366; color: #fff;
-  border-radius: 50px;
-  display: flex; align-items: center; gap: 10px;
-  padding: 13px 20px 13px 16px;
-  text-decoration: none;
-  font-family: var(--font-display); font-weight: 800; font-size: 17px;
-  text-transform: uppercase; letter-spacing: 0.04em;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-.wa-float:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(0,0,0,0.5); color: #fff; }
+/* Floating WhatsApp */
+.wa-float { position: fixed; right: max(20px, env(safe-area-inset-right, 20px)); bottom: 24px; z-index: 50; background: #25d366; color: #fff; border-radius: 50px; display: flex; align-items: center; gap: 10px; padding: 13px 20px 13px 16px; text-decoration: none; font-family: var(--font-display); font-weight: 800; font-size: 17px; text-transform: uppercase; letter-spacing: 0.04em; box-shadow: 0 4px 18px rgba(0,0,0,0.45); transition: transform .15s, box-shadow .15s; }
+.wa-float:hover { transform: scale(1.05); color: #fff; }
 .wa-float svg { width: 26px; height: 26px; flex: none; }
 
 /* Footer */
@@ -241,40 +127,22 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
   .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .nav a.link { display: none; }
   .menu-toggle { display: flex; }
+  .brand-logo { height: 72px; }
 }
 @media (max-width: 600px) {
-  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  .lockup { --h: 68px; }
-  .lb-close { top: -8px; right: -8px; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .brand-logo { height: 56px; }
   .wa-float { right: 12px; bottom: 16px; padding: 12px 14px; font-size: 15px; }
+  .lb-close { top: -8px; right: -8px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .g-item img, .btn { transition: none; }
+  .g-item img { transition: none; }
   .g-item:hover img { transform: none; }
 }
 </style>
 <style>[hidden]{display:none!important}</style>
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="lockup" viewBox="0 0 300 108" overflow="visible">
-    <rect x="198" y="4" width="15" height="26" fill="#e0211f"/>
-    <path d="M50 42 L150 5 L250 42" fill="none" stroke="#f5b82e" stroke-width="9" stroke-linejoin="miter" stroke-miterlimit="10"/>
-    <rect x="144" y="18" width="12" height="12" fill="#f5b82e"/>
-    <path d="M150 18 V30 M144 24 H156" stroke="#0b0b0c" stroke-width="2"/>
-    <path d="M86 33 V82 M214 33 V82" stroke="#f5b82e" stroke-width="7"/>
-    <g transform="translate(12.3 0) skewX(-10)">
-      <text x="155" y="75" text-anchor="middle" textLength="236" lengthAdjust="spacingAndGlyphs" style="font-family:'Dela Gothic One',Impact,sans-serif;font-size:44px" fill="#e0211f">TRAVERS</text>
-      <text x="150" y="70" text-anchor="middle" textLength="236" lengthAdjust="spacingAndGlyphs" style="font-family:'Dela Gothic One',Impact,sans-serif;font-size:44px" fill="#f3f1ee" stroke="#0b0b0c" stroke-width="5" paint-order="stroke" stroke-linejoin="round">TRAVERS</text>
-    </g>
-    <g transform="rotate(-2 150 92)">
-      <polygon points="76,102 90,80 224,80 210,102" fill="#e0211f" transform="translate(4 4)"/>
-      <polygon points="76,102 90,80 224,80 210,102" fill="#f5b82e"/>
-      <text x="150" y="98" text-anchor="middle" textLength="108" lengthAdjust="spacingAndGlyphs" style="font-family:'Big Shoulders Display',Impact,sans-serif;font-weight:900;font-size:20px" fill="#0b0b0c">BUILDERS</text>
-    </g>
-  </symbol>
-</svg>
 
 <header class="site-head">
   <div class="wrap head-row">
@@ -311,7 +179,7 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
   <div class="wrap">
     <span class="label">Our work</span>
     <h1>Project <em>Gallery</em></h1>
-    <p>A selection of completed projects across construction, electrical, roofing, tiling, pools and more.</p>
+    <p>All our completed projects — construction, roofing, electrical, tiling, pools and more.</p>
   </div>
 </div>
 
@@ -319,7 +187,7 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
   <div class="wrap gallery-section">
 
     <div class="filter-bar" role="group" aria-label="Filter by category">
-      <button class="filter-btn active" data-filter="all">All (20)</button>
+      <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="build">Build</button>
       <button class="filter-btn" data-filter="electrical">Electrical</button>
       <button class="filter-btn" data-filter="finishing">Finishing</button>
@@ -328,126 +196,388 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
 
     <div class="gallery-grid" id="gallery-grid">
 
-      <!-- Named images -->
-      <div class="g-item" data-cat="build" data-caption="New House Construction" tabindex="0" role="button" aria-label="View: New House Construction">
+      <!-- Named service images -->
+      <div class="g-item" data-cat="build" data-caption="New House Construction" tabindex="0" role="button" aria-label="New House Construction">
         <span class="g-tag">Build</span>
-        <img src="New house.jpeg" alt="House under construction with roof framework" loading="lazy">
+        <img src="New house.jpeg" alt="House under construction" loading="lazy">
         <span class="g-label">New House Construction</span>
       </div>
-
-      <div class="g-item" data-cat="finishing" data-caption="Renovations — Modern Kitchen" tabindex="0" role="button" aria-label="View: Renovations — Modern Kitchen">
+      <div class="g-item" data-cat="finishing" data-caption="Renovations" tabindex="0" role="button" aria-label="Renovations">
         <span class="g-tag">Finishing</span>
-        <img src="Renovations.jpeg" alt="Modern kitchen renovation with blue LED ceiling lighting" loading="lazy">
+        <img src="Renovations.jpeg" alt="Modern kitchen renovation" loading="lazy">
         <span class="g-label">Renovations</span>
       </div>
-
-      <div class="g-item" data-cat="build" data-caption="Roofing Structure" tabindex="0" role="button" aria-label="View: Roofing Structure">
+      <div class="g-item" data-cat="build" data-caption="Roofing" tabindex="0" role="button" aria-label="Roofing">
         <span class="g-tag">Build</span>
-        <img src="Roofing1.jpeg" alt="Timber roof trusses and framework on a new build" loading="lazy">
+        <img src="Roofing.jpeg" alt="Roof structure on new build" loading="lazy">
         <span class="g-label">Roofing</span>
       </div>
-
-      <div class="g-item" data-cat="build" data-caption="Roofing Frame" tabindex="0" role="button" aria-label="View: Roofing Frame">
+      <div class="g-item" data-cat="build" data-caption="Roofing Frame" tabindex="0" role="button" aria-label="Roofing Frame">
         <span class="g-tag">Build</span>
-        <img src="Roofing.jpeg" alt="Roof frame and brickwork on a new house construction" loading="lazy">
+        <img src="Roofing1.jpeg" alt="Timber roof trusses" loading="lazy">
         <span class="g-label">Roofing</span>
       </div>
-
-      <div class="g-item" data-cat="electrical" data-caption="Electrical — Distribution Board" tabindex="0" role="button" aria-label="View: Electrical — Distribution Board">
+      <div class="g-item" data-cat="electrical" data-caption="Electrical" tabindex="0" role="button" aria-label="Electrical">
         <span class="g-tag">Electrical</span>
-        <img src="Electrical.jpeg" alt="Electrician wiring an industrial distribution board" loading="lazy">
+        <img src="Electrical.jpeg" alt="Electrician at distribution board" loading="lazy">
         <span class="g-label">Electrical</span>
       </div>
-
-      <div class="g-item" data-cat="finishing" data-caption="Ceiling Installation" tabindex="0" role="button" aria-label="View: Ceiling Installation">
+      <div class="g-item" data-cat="finishing" data-caption="Ceilings" tabindex="0" role="button" aria-label="Ceilings">
         <span class="g-tag">Finishing</span>
-        <img src="Ceiling.jpeg" alt="Ceiling installation work in a large commercial space" loading="lazy">
+        <img src="Ceiling.jpeg" alt="Ceiling installation" loading="lazy">
         <span class="g-label">Ceilings</span>
       </div>
-
-      <div class="g-item" data-cat="finishing" data-caption="Tiling — Bathroom" tabindex="0" role="button" aria-label="View: Tiling — Bathroom">
+      <div class="g-item" data-cat="finishing" data-caption="Tiling" tabindex="0" role="button" aria-label="Tiling">
         <span class="g-tag">Finishing</span>
-        <img src="Tiling.jpeg" alt="Marble-tiled bathroom with walk-in shower" loading="lazy">
+        <img src="Tiling.jpeg" alt="Tiled bathroom" loading="lazy">
         <span class="g-label">Tiling</span>
       </div>
-
-      <div class="g-item" data-cat="outdoor" data-caption="Swimming Pool" tabindex="0" role="button" aria-label="View: Swimming Pool">
+      <div class="g-item" data-cat="outdoor" data-caption="Swimming Pool" tabindex="0" role="button" aria-label="Swimming Pool">
         <span class="g-tag">Outdoor</span>
-        <img src="Swimmin pool.jpeg" alt="Freshly built swimming pool with clear blue water" loading="lazy">
+        <img src="Swimmin pool.jpeg" alt="Swimming pool" loading="lazy">
         <span class="g-label">Swimming Pool</span>
       </div>
 
-      <!-- WhatsApp project photos -->
-      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="View project photo">
+      <!-- WhatsApp project photos Oct 14 11:55 -->
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.10.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.11 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.11.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.12 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.12.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.14 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Build</span>
         <img src="WhatsApp Image 2026-10-14 at 11.55.14.jpeg" alt="Construction project" loading="lazy">
         <span class="g-label">Construction</span>
       </div>
-
-      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="View project photo">
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Build</span>
         <img src="WhatsApp Image 2026-10-14 at 11.55.15.jpeg" alt="Construction project" loading="lazy">
         <span class="g-label">Construction</span>
       </div>
-
-      <div class="g-item" data-cat="finishing" data-caption="Interior Finishing" tabindex="0" role="button" aria-label="View project photo">
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Finishing</span>
-        <img src="WhatsApp Image 2026-10-14 at 11.55.17 (1).jpeg" alt="Interior finishing work" loading="lazy">
-        <span class="g-label">Interior Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.17 (1).jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
       </div>
-
-      <div class="g-item" data-cat="finishing" data-caption="Interior Finishing" tabindex="0" role="button" aria-label="View project photo">
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Finishing</span>
-        <img src="WhatsApp Image 2026-10-14 at 11.55.18.jpeg" alt="Interior finishing work" loading="lazy">
-        <span class="g-label">Interior Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.17 (2).jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
       </div>
-
-      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="View project photo">
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.17.jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.18 (1).jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.18 (2).jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.18.jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Build</span>
         <img src="WhatsApp Image 2026-10-14 at 11.55.19 (1).jpeg" alt="Construction project" loading="lazy">
         <span class="g-label">Construction</span>
       </div>
-
-      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="View project photo">
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Build</span>
         <img src="WhatsApp Image 2026-10-14 at 11.55.19.jpeg" alt="Construction project" loading="lazy">
         <span class="g-label">Construction</span>
       </div>
-
-      <div class="g-item" data-cat="finishing" data-caption="Interior Finishing" tabindex="0" role="button" aria-label="View project photo">
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.20 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.20.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Finishing</span>
-        <img src="WhatsApp Image 2026-10-14 at 11.55.28 (1).jpeg" alt="Interior finishing work" loading="lazy">
-        <span class="g-label">Interior Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.24 (1).jpeg" alt="Finishing work" loading="lazy">
+        <span class="g-label">Finishing</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.24 (2).jpeg" alt="Finishing work" loading="lazy">
+        <span class="g-label">Finishing</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.24.jpeg" alt="Finishing work" loading="lazy">
+        <span class="g-label">Finishing</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.25 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.25 (2).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.25.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.26 (2).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.26.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.27 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.27 (2).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.27 (3).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.27.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.28 (1).jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.28 (2).jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
+      </div>
+      <div class="g-item" data-cat="finishing" data-caption="Interior Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Finishing</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.28.jpeg" alt="Interior finishing" loading="lazy">
+        <span class="g-label">Interior</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.29 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.30 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.30 (2).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.30.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 11.55.31 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
       </div>
 
-      <div class="g-item" data-cat="finishing" data-caption="Interior Finishing" tabindex="0" role="button" aria-label="View project photo">
-        <span class="g-tag">Finishing</span>
-        <img src="WhatsApp Image 2026-10-14 at 11.55.28 (2).jpeg" alt="Interior finishing work" loading="lazy">
-        <span class="g-label">Interior Finishing</span>
-      </div>
-
-      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="View project photo">
+      <!-- WhatsApp project photos Oct 14 12:01 -->
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Build</span>
         <img src="WhatsApp Image 2026-10-14 at 12.01.06 (1).jpeg" alt="Construction project" loading="lazy">
         <span class="g-label">Construction</span>
       </div>
-
-      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="View project photo">
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.01.06.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.01.07 (1).jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Build</span>
         <img src="WhatsApp Image 2026-10-14 at 12.01.07 (2).jpeg" alt="Construction project" loading="lazy">
         <span class="g-label">Construction</span>
       </div>
+      <div class="g-item" data-cat="build" data-caption="Project Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.01.07.jpeg" alt="Construction project" loading="lazy">
+        <span class="g-label">Construction</span>
+      </div>
 
-      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Project" tabindex="0" role="button" aria-label="View project photo">
+      <!-- WhatsApp project photos Oct 14 12:29 -->
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Outdoor</span>
-        <img src="WhatsApp Image 2026-10-14 at 12.29.20 (1).jpeg" alt="Outdoor project work" loading="lazy">
+        <img src="WhatsApp Image 2026-10-14 at 12.29.17.jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.18 (1).jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.18 (2).jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.18.jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.20 (1).jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.20 (2).jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.20.jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.21 (1).jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.21 (2).jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.21 (3).jpeg" alt="Outdoor project" loading="lazy">
+        <span class="g-label">Outdoor</span>
+      </div>
+      <div class="g-item" data-cat="outdoor" data-caption="Outdoor Work" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Outdoor</span>
+        <img src="WhatsApp Image 2026-10-14 at 12.29.22.jpeg" alt="Outdoor project" loading="lazy">
         <span class="g-label">Outdoor</span>
       </div>
 
-      <!-- hero used as general build shot -->
-      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="View: On Site">
+      <!-- Oct 16 & 17 photos -->
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
         <span class="g-tag">Build</span>
-        <img src="hero.jpg" alt="Builders on site" loading="lazy">
+        <img src="WhatsApp Image 2026-10-16 at 15.57.00 (1).jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.38 (1).jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.38.jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.39 (1).jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.39 (2).jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.39.jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.40 (1).jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.40.jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.41 (1).jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.41.jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.42 (1).jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.42.jpeg" alt="On site" loading="lazy">
+        <span class="g-label">On Site</span>
+      </div>
+      <div class="g-item" data-cat="build" data-caption="On Site" tabindex="0" role="button" aria-label="Project photo">
+        <span class="g-tag">Build</span>
+        <img src="WhatsApp Image 2026-10-17 at 09.59.43.jpeg" alt="On site" loading="lazy">
         <span class="g-label">On Site</span>
       </div>
 
@@ -489,9 +619,9 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
       <img id="lb-img" src="" alt="">
     </div>
     <div class="lb-nav">
-      <button class="lb-prev" id="lb-prev" type="button" aria-label="Previous photo">&#8592;</button>
+      <button class="lb-prev" id="lb-prev" type="button" aria-label="Previous">&#8592;</button>
       <span class="lb-caption" id="lb-caption"></span>
-      <button class="lb-next" id="lb-next" type="button" aria-label="Next photo">&#8594;</button>
+      <button class="lb-next" id="lb-next" type="button" aria-label="Next">&#8594;</button>
     </div>
     <span class="lb-count" id="lb-count"></span>
   </div>
@@ -528,44 +658,28 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
   var lbCount = document.getElementById('lb-count');
   var items = Array.from(document.querySelectorAll('.g-item'));
   var current = 0;
-
-  function visibleItems() {
-    return items.filter(function (i) { return !i.hidden; });
+  function vis() { return items.filter(function (i) { return !i.hidden; }); }
+  function show(list, idx) {
+    var item = list[idx];
+    var img = item.querySelector('img');
+    lbImg.src = img.src; lbImg.alt = img.alt;
+    lbCap.textContent = item.getAttribute('data-caption') || '';
+    lbCount.textContent = (idx + 1) + ' / ' + list.length;
+    Array.prototype.forEach.call(lb.querySelectorAll('button[aria-current]'), function(b){ b.removeAttribute('aria-current'); });
   }
-
   function open(item) {
-    var vis = visibleItems();
-    current = vis.indexOf(item);
-    show(vis, current);
-    lb.hidden = false;
-    document.body.style.overflow = 'hidden';
+    var list = vis(); current = list.indexOf(item);
+    show(list, current);
+    lb.hidden = false; document.body.style.overflow = 'hidden';
     document.getElementById('lb-close').focus();
   }
-
-  function show(vis, idx) {
-    var item = vis[idx];
-    var img = item.querySelector('img');
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    lbCap.textContent = item.getAttribute('data-caption') || '';
-    lbCount.textContent = (idx + 1) + ' / ' + vis.length;
-  }
-
-  function close() {
-    lb.hidden = true;
-    document.body.style.overflow = '';
-  }
-
-  function prev() { var vis = visibleItems(); current = (current - 1 + vis.length) % vis.length; show(vis, current); }
-  function next() { var vis = visibleItems(); current = (current + 1) % vis.length; show(vis, current); }
-
+  function close() { lb.hidden = true; document.body.style.overflow = ''; }
+  function prev() { var list = vis(); current = (current - 1 + list.length) % list.length; show(list, current); }
+  function next() { var list = vis(); current = (current + 1) % list.length; show(list, current); }
   items.forEach(function (item) {
     item.addEventListener('click', function () { open(item); });
-    item.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(item); }
-    });
+    item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(item); } });
   });
-
   document.getElementById('lb-close').addEventListener('click', close);
   document.getElementById('lb-prev').addEventListener('click', prev);
   document.getElementById('lb-next').addEventListener('click', next);
@@ -577,9 +691,8 @@ footer::before { content: ""; display: block; height: 12px; background: repeatin
     if (e.key === 'ArrowRight') next();
   });
 })();
-</script>
-<script>
-// Hamburger menu toggle
+
+// Hamburger
 (function () {
   var toggle = document.getElementById('menu-toggle');
   var nav = document.getElementById('mobile-nav');
